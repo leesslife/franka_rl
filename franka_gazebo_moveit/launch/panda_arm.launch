@@ -1,0 +1,38 @@
+<launch>
+
+
+	<include file="$(find franka_gazebo_moveit)/launch/start_empty.launch" />
+
+
+	<param name="robot_description" command="$(find xacro)/xacro --inorder $(find franka_gazebo_moveit)/robots/panda_arm.urdf.xacro"/>
+
+	<node name="spawn" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model panda"/>
+
+	<rosparam file="$(find franka_gazebo_moveit)/config/position_controller.yaml" command="load" />
+
+	<rosparam command="load" file="$(find franka_gazebo_moveit)/config/joint_states.yaml"/>
+	
+	<node name="franka_controller_spawner" pkg="controller_manager" type="spawner" args=
+		"joint_state_controller
+		panda_arm_controller"/>
+
+	<!-- https://answers.gazebosim.org//question/5468/gazebo_ros_pkgs-no-p-gain-specified-for-pid-in-positionjointinterface/ -->
+	<rosparam command="load" file="$(find franka_gazebo_moveit)/config/default.yaml"/>
+
+
+	<!-- <rosparam command="load" file="$(find franka_gazebo_moveit)/config/joint_states.yaml" ns="franka"/>
+	<rosparam command="load" file="$(find franka_gazebo_moveit)/config/joint_commands.yaml" ns="franka"/>
+	<rosparam command="load" file="$(find franka_gazebo_moveit)/config/default.yaml"/>
+
+	<node name="franka_controller_spawner" pkg="controller_manager" type="spawner" args=
+		"franka/joint_state_controller
+		franka/joint1_position_controller
+		franka/joint2_position_controller
+		franka/joint3_position_controller
+		franka/joint4_position_controller
+		franka/joint5_position_controller
+		franka/joint6_position_controller
+		franka/joint7_position_controller"/> -->
+
+	<node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub"/>
+</launch>

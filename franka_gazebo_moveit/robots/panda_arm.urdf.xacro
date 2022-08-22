@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="panda">
+
+	<xacro:arg name="gazebo" default="true"/>
+	<xacro:arg name="effort_interface" default="false"/>
+	<xacro:arg name="position_interface" default="false"/>
+	
+  <xacro:include filename="$(find franka_gazebo_moveit)/robots/panda_arm.xacro" >
+  	<xacro:arg name="gazebo" value="${gazebo}"/>
+  	<xacro:arg name="effort_interface" value="${effort_interface}"/>
+  	<xacro:arg name="position_interface" value="${position_interface}"/>
+  </xacro:include>
+
+  <xacro:panda_arm connected_to='world'/>
+
+  
+</robot>

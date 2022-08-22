@@ -1,0 +1,62 @@
+joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+panda_arm_group_controller:
+    type: position_controllers/JointTrajectoryController
+    joints:
+        - panda_joint1
+        - panda_joint2
+        - panda_joint3
+        - panda_joint4
+        - panda_joint5
+        - panda_joint6
+        - panda_joint7
+
+    gains:
+        panda_joint1: { p: 12000, d: 50, i: 0.0, i_clamp: 10000 }
+        panda_joint2: { p: 30000, d: 100, i: 0.02, i_clamp: 10000 }
+        panda_joint3: { p: 18000, d: 50, i: 0.01, i_clamp: 1 }
+        panda_joint4: { p: 18000, d: 70, i: 0.01, i_clamp: 10000 }
+        panda_joint5: { p: 12000, d: 70, i: 0.01, i_clamp: 1 }
+        panda_joint6: { p: 7000, d: 50, i: 0.01, i_clamp: 1 }
+        panda_joint7: { p: 2000, d: 20, i: 0.0, i_clamp: 1 }
+
+    constraints:
+        goal_time: 2.0
+        stopped_velocity_tolerance: 0.05
+        panda_joint1: {trajectory: 0.1, goal: 0.1}
+        panda_joint2: {trajectory: 0.1, goal: 0.1}
+        panda_joint3: {trajectory: 0.1, goal: 0.1}
+        panda_joint4: {trajectory: 0.1, goal: 0.1}
+        panda_joint5: {trajectory: 0.1, goal: 0.1}
+        panda_joint6: {trajectory: 0.1, goal: 0.1}
+        panda_joint7: {trajectory: 0.1, goal: 0.1}
+        
+    state_publish_rate: 25
+
+panda_gripper_controller:
+    type: position_controllers/JointTrajectoryController
+    joints:
+        - panda_finger_joint1
+        - panda_finger_joint2
+
+    gains:
+        panda_finger_joint1: { p: 5, d: 3.0, i: 0, i_clamp: 1 }
+        panda_finger_joint2: { p: 5, d: 1.0, i: 0, i_clamp: 1 }
+
+    state_publish_rate: 25
+
+
+#       goal_time: 0.6
+#       stopped_velocity_tolerance: 0.05
+#       shoulder_pan_joint: {trajectory: 0.1, goal: 0.1}
+#       shoulder_lift_joint: {trajectory: 0.1, goal: 0.1}
+#       elbow_joint: {trajectory: 0.1, goal: 0.1}
+#       wrist_1_joint: {trajectory: 0.1, goal: 0.1}
+#       wrist_2_joint: {trajectory: 0.1, goal: 0.1}
+#       wrist_3_joint: {trajectory: 0.1, goal: 0.1}
+#   state_publish_rate:  25
+#   action_monitor_rate: 1
+#   stop_trajectory_duration: 0.1
+#   allow_partial_joints_goal: true

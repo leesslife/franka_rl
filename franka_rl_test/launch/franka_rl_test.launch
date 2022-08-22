@@ -1,0 +1,8 @@
+<launch>
+<!-- <node name="franka_rl_test" pkg="franka_rl_test" type="grip" output="screen"/> -->
+<!-- <node name="make_check" pkg="franka_rl_test" type="check" output="screen"/> -->
+<param name="move_group/trajectory_execution/allowed_execution_duration_scaling" value="9.0" />
+<!-- <param name="move_group/trajectory_execution/execution_duration_monitoring" value="false" /> -->
+<node name="initiate" pkg="franka_rl_test" type="initiate" output="screen"/>
+
+</launch>

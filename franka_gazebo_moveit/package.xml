@@ -1,0 +1,34 @@
+<package>
+  <name>franka_gazebo_moveit</name>
+  <version>0.1.0</version>
+  <description>
+    Franka gazebo motion planning with ros-control and moveit </description>
+  <author email="marselapolic@gmail.com">marselap</author>
+  <maintainer email="marselapolic@gmail.com">marselap</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">https://none.yet</url>
+  <url type="bugtracker">https://github.com/marselap/franka_gazebo_moveit/issues</url>
+  <url type="repository">https://github.com/marselap/franka_gazebo_moveit/</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+
+
+  <!-- <run_depend>franka_gazebo</run_depend> -->
+  <run_depend>moveit_ros_move_group</run_depend>
+  <run_depend>moveit_fake_controller_manager</run_depend>
+  <run_depend>moveit_kinematics</run_depend>
+  <run_depend>moveit_planners_ompl</run_depend>
+  <run_depend>moveit_ros_visualization</run_depend>
+  <run_depend>joint_state_publisher</run_depend>
+  <run_depend>robot_state_publisher</run_depend>
+  <run_depend>xacro</run_depend>
+  <run_depend>topic_tools</run_depend>
+
+</package>
